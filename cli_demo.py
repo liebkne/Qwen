@@ -9,6 +9,7 @@ import argparse
 import os
 import platform
 import shutil
+import sys
 from copy import deepcopy
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -83,7 +84,7 @@ def _print_history(history):
 def _get_input() -> str:
     while True:
         try:
-            message = input('User> ').strip()
+            message = sys.stdin.read('User> ').strip()
         except UnicodeDecodeError:
             print('[ERROR] Encoding error in input')
             continue
